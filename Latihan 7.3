@@ -1,0 +1,7 @@
+// install dulu npm install express --save
+var express = require('express')
+var app =express()
+app.get('/', (req,res)=>{
+    res.end('Konten dari method GET')
+})
+app.listen(8000, ()=>{console.log('Server is runing on port 8000')})
