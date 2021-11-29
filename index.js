@@ -3,7 +3,16 @@ var http = require('http');
 
 // membuat server object 
 http.createServer( (req, res)=>{
-    res.write('<p>Pengembangan Aplikasi Web dengan menggunakan Nodejs</p>');
+   if(req.url =='/home')
+        res.write('<p>Konten Home</p>')
+    else if(req.url =='/product')
+        res.write('<p>Konten Product</p>')
+     else if(req.url =='/order')
+        res.write('<p>Konten Order</p>')
+     else if(req.url =='/')
+        res.write('<p>Pengembangan Aplikasi Web dengan Nodejs</p>')
+    else 
+        res.write('<h1>404</h1>')
     // menuliskan respon kepada client 
 
 // memberhentikan respon 
