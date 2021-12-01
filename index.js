@@ -3,9 +3,17 @@ var http = require('http')
 var express = require('express')
 var app =express()
 
-app.get('/users/:userId/books/:bookId', (req,res)=>{
-    res.end(req.params)
+var data =[];
+app.get('/data', (req, res)=>{
+    res.json(data)
 })
+app.post('/data', (req, res)=>{
+    data.push(Date.now())
+    res.json(data)
+})
+// app.get('/users/:userId/books/:bookId', (req,res)=>{
+//     res.end(req.params)
+// })
 // app.post('/about', (req,res)=>{
 //     res.end('About')
 // })
