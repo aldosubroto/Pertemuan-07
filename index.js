@@ -2,15 +2,35 @@
 var http = require('http')
 var express = require('express')
 var app =express()
+// harus menginstall npm install body-parser --save
+var bodyParser = require('body-parser');
+//const { read } = require('fs');
+app.use(bodyParser.urlencoded({extended: false})); // mengetahui kode awal bodyParser itu false 
+app.use(bodyParser.json());
 
-var data =[];
-app.get('/data', (req, res)=>{
-    res.json(data)
+var persons =[]
+app.post('/person', (req, res)=>{
+    persons.push(req.body)
+    res.json(req.body)
 })
-app.post('/data', (req, res)=>{
-    data.push(Date.now())
-    res.json(data)
+
+app.get('/person', (req, res)=>{
+    res.json(persons)
 })
+
+http.createServer(app)
+.listen(8000, ()=>{
+    console.log('Server is running on port 8000')
+})
+// var data =[];
+// app.get('/data', (req, res)=>{
+//     res.json(data)
+// })
+// app.post('/data', (req, res)=>{
+//     data.push(Date.now())
+//     res.json(data)
+// })
+//===================================================================================================
 // app.get('/users/:userId/books/:bookId', (req,res)=>{
 //     res.end(req.params)
 // })
