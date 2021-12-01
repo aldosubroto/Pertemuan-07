@@ -3,12 +3,12 @@ var http = require('http')
 var express = require('express')
 var app =express()
 
-app.get('/home', (req,res)=>{
-    res.end('Home')
+app.get('/users/:userId/books/:bookId', (req,res)=>{
+    res.end(req.params)
 })
-app.post('/about', (req,res)=>{
-    res.end('About')
-})
+// app.post('/about', (req,res)=>{
+//     res.end('About')
+// })
 app.listen(8000, ()=>{console.log('Server is runing on port 8000')})
 
 
